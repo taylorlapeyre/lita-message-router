@@ -13,14 +13,7 @@ module Lita
 
         if match
           command = robot.mention_name + ' ' + match
-
-          source = if chat.room
-            Lita::Source.new(room: chat.room)
-          else
-            Lita::Source.new(user: chat.user)
-          end
-
-          real_message = Lita::Message.new(robot, command, source)
+          real_message = Lita::Message.new(robot, command, chat.message.source)
           robot.receive(real_message)
         end
       end
