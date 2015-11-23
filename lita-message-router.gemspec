@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-message-router"
-  spec.version       = "0.1.3"
+  spec.version       = "0.1.4"
   spec.authors       = ["Taylor Lapeyre"]
   spec.email         = ["taylorlapeyre@gmail.com"]
   spec.description   = "This handler allows you to specify as many 'mention names' as you want for your Lita robot."
