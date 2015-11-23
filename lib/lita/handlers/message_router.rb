@@ -12,7 +12,6 @@ module Lita
         match = match(message)
 
         if match
-          debugger
           real_message = Lita::Message.new(robot, match, Lita::Source.new(user: chat.user))
           robot.receive(real_message)
         end
