@@ -12,7 +12,8 @@ module Lita
         match = match(message)
 
         if match
-          real_message = Lita::Message.new(robot, match, Lita::Source.new(user: chat.user))
+          command = robot.mention_name + ' ' + match
+          real_message = Lita::Message.new(robot, command, Lita::Source.new(user: chat.user))
           robot.receive(real_message)
         end
       end
