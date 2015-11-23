@@ -1,5 +1,3 @@
-require 'byebug'
-
 module Lita
   module Handlers
     class MessageRouter < Handler
