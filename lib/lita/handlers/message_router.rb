@@ -19,7 +19,7 @@ module Lita
       end
 
       def match(message)
-        regex = Regexp.new('^(' + config.robot_mention_names.join('|') + ') (.+)')
+        regex = /^(#{config.robot_mention_names.map { |n| Regexp.escape(n) }.join('|')})\s*(.+)/
         matches = message.match(regex)
         matches[2] if matches
       end
