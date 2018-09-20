@@ -18,10 +18,20 @@ module Lita
         end
       end
 
+      def route_prefix
+        @prefix ||= /^(?:#{
+          config.robot_mention_names.map do |p|
+            case p
+            when Regexp then "(?:#{p.to_s})"
+            else Regexp.escape(p.to_s)
+            end
+          end.join('|')
+          })\s*(.+)/
+      end
+
       def match(message)
-        regex = /^(#{config.robot_mention_names.map { |n| Regexp.escape(n) }.join('|')})\s*(.+)/
-        matches = message.match(regex)
-        matches[2] if matches
+        matches = message.match(route_prefix)
+        matches[-1] if matches
       end
 
       Lita.register_handler(self)
